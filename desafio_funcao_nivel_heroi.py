@@ -19,8 +19,20 @@ def calcular_nivel_rank(vitorias, derrotas):
   
   return saldoRank, nivel
 
-vitorias = int(input("Digite a quantidade de vitórias do jogador: "))
-derrotas = int(input("Digite a quantidade de derrotas do jogador: "))
+def obter_valor_valido(mensagem):
+    while True:
+        valor = input(mensagem)
+        if valor.isdigit():
+            valor = int(valor)
+            if valor < 0:
+                print("Por favor, insira um número inteiro positivo.")
+            else:
+                return valor
+        else:
+            print("Entrada inválida. Por favor, insira apenas número(inteiro positivo).")
+
+vitorias = obter_valor_valido("Digite a quantidade de vitórias do jogador: ")
+derrotas = obter_valor_valido("Digite a quantidade de derrotas do jogador: ")
 
 saldoRank, nivel = calcular_nivel_rank(vitorias, derrotas)
 
